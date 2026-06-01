@@ -13,11 +13,8 @@ const server = createServer((req, res) => {
         return;
     }
 
-    res.writeHead(404, {
-        'Content-Type': 'application/json'
-    });
-
-    res.end(JSON.stringify({ error: 'Not found' }));
+    res.statusCode = 404;
+    res.end();
 });
 
 const port = process.env.PORT || 3000;
