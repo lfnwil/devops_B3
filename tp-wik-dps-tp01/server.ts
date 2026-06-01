@@ -13,15 +13,6 @@ const server = createServer((req, res) => {
         return;
     }
 
-    if (req.method === 'GET' && req.url === '/stats') {
-        res.writeHead(200, {
-            'Content-Type': 'application/json'
-        });
-
-        res.end(JSON.stringify(req., null, 2));
-        return;
-    }
-
     res.writeHead(404, {
         'Content-Type': 'application/json'
     });
