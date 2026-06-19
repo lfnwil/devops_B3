@@ -1,6 +1,7 @@
 import { createServer } from 'node:http';
 import { existsSync } from 'node:fs';
 import { loadEnvFile } from 'node:process';
+import { hostname } from 'node:os';
 
 if (existsSync('.env')) {
     loadEnvFile();
@@ -8,6 +9,8 @@ if (existsSync('.env')) {
 
 const server = createServer((req, res) => {
     if (req.method === 'GET' && req.url === '/ping') {
+        console.log(`[${new Date().toISOString()}] /ping handled by ${hostname()}`);
+
         res.writeHead(200, {
             'Content-Type': 'application/json'
         });
